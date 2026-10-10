@@ -403,7 +403,7 @@ pages = [
 for f,t,d,b in pages:
     open(os.path.join(OUT,f),"w").write(page(f,t,d,b))
 open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-urls="".join(f"<url><loc>{SITE}/{'' if f=='index.html' else f}</loc></url>" for f,*_ in pages if f!="404.html")
+urls="".join(f"<url><loc>{SITE}/{'' if f=='index.html' else f}</loc><lastmod>{__import__('datetime').date.today().isoformat()}</lastmod></url>" for f,*_ in pages if f!="404.html")
 open(os.path.join(OUT,"sitemap.xml"),"w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
 HTACCESS = """ErrorDocument 404 /404.html
 Options -Indexes
