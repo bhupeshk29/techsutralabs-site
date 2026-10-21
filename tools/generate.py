@@ -77,6 +77,8 @@ def page(fname, title, desc, body):
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#082f49">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"TechSutra Labs Ventures","legalName":"{LEGAL}","slogan":"Innovate. Build. Transform.","url":"{SITE}","logo":"{SITE}/assets/apple-touch-icon.png","email":"{EMAIL}","address":{{"@type":"PostalAddress","addressCountry":"IN"}},"description":"Software development, AI, ML and generative AI solutions, IT services, support and AI-powered enterprise software products.","knowsAbout":["Artificial intelligence","Machine learning","Generative AI","Software development","Enterprise software"]}}</script>
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -424,4 +426,6 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 """
 open(os.path.join(OUT,".htaccess"),"w").write(HTACCESS)
+os.makedirs(os.path.join(OUT,".well-known"),exist_ok=True)
+open(os.path.join(OUT,".well-known","security.txt"),"w").write(f"Contact: mailto:{EMAIL}\nExpires: 2027-10-18T00:00:00.000Z\nPreferred-Languages: en\nCanonical: {SITE}/.well-known/security.txt\n")
 print("done")

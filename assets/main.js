@@ -1,4 +1,5 @@
 document.documentElement.classList.add("js");
+if(window.top!==window.self){try{window.top.location=window.self.location}catch(e){document.documentElement.style.display="none"}} // clickjacking guard: never render inside another site's frame
 (function(){
   var header=document.querySelector('.site-header'),t=document.querySelector('.nav-toggle'),l=document.getElementById('primary-nav');
   function setMenu(open){l.classList.toggle('open',open);t.setAttribute('aria-expanded',open);t.setAttribute('aria-label',open?'Close menu':'Open menu');}

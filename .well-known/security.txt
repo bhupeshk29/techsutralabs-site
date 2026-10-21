@@ -1,0 +1,4 @@
+Contact: mailto:bk@techsutralabs.co.in
+Expires: 2027-10-18T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://techsutralabs.com/.well-known/security.txt
